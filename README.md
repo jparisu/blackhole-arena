@@ -2,7 +2,7 @@
 
 [![Tests](https://github.com/jparisu/blackhole-arena/actions/workflows/tests.yml/badge.svg)](https://github.com/jparisu/blackhole-arena/actions/workflows/tests.yml)
 [![Tournament](https://github.com/jparisu/blackhole-arena/actions/workflows/tournament.yml/badge.svg)](https://github.com/jparisu/blackhole-arena/actions/workflows/tournament.yml)
-[![Docs](https://readthedocs.org/projects/blackhole-arena/badge/?version=latest)](https://blackhole-arena.readthedocs.io)
+[![Docs](https://img.shields.io/readthedocs/blackhole-arena/latest)](https://blackhole-arena.readthedocs.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ### ▶️ &nbsp;[**Play it now**](https://jparisu.github.io/blackhole-arena) &nbsp;·&nbsp; 📚 &nbsp;[**Read the docs**](https://blackhole-arena.readthedocs.io/en/latest/en/) &nbsp;·&nbsp; 🚀 &nbsp;[**Submit your own AI**](https://blackhole-arena.readthedocs.io/en/latest/en/game/upload-a-bot/submit-a-player/)

@@ -32,3 +32,4 @@ web/leaderboard.json
 # Private files
 tmp/
 devs/
+.claude
