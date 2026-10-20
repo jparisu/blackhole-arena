@@ -1,0 +1,72 @@
+name: Tests
+
+# Runs on every push and every pull request. A PR that fails is not merged
+# (enforce this with branch protection on `main`).
+on:
+  push:
+    branches: [main]
+    # The Tournament workflow commits results/leaderboard.json on a schedule.
+    # That is a data-only commit — it cannot change test outcomes, and rerunning
+    # the suite for it wastes minutes. (Pages *does* watch that path, on purpose.)
+    paths-ignore:
+      - "results/**"
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        # The floor of the declared support range (pyproject: requires-python
+        # >=3.10, ruff target-version = py310), the current stable, and the
+        # newest. 3.10 matters most: it is what the metadata promises.
+        python-version: ["3.10", "3.12", "3.14"]
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Lint (ruff)
+        run: ruff check .
+
+      - name: Type check (mypy)
+        run: mypy
+
+      - name: Run tests
+        # Skips the submitted players, which the Custom players workflow checks
+        # instead, so one broken bot fails its own check and not every unrelated
+        # pull request. A plain `pytest` locally still runs everything.
+        run: pytest -q --ignore=tests/test_custom_players.py
+
+      - name: Smoke-run the tournament (soft timeout, fast)
+        # Writes to a throwaway path, NOT results/leaderboard.json: the committed
+        # leaderboard is a published artifact produced by the Tournament workflow,
+        # and overwriting it here made this step mutate the working tree.
+        # --repetitions 1 keeps it an actual smoke test (the default of 10 means
+        # 1120 games on every push and every PR).
+        # Built-in players only, via an empty submitted manifest: --no-subprocess
+        # means soft budgets, so a submitted bot that loops forever would hang
+        # this job until the timeout. The Custom players workflow runs the same
+        # smoke test *with* them, forked, where a hang can be killed.
+        run: |
+          printf 'players: []\n' > "$RUNNER_TEMP/no-custom.yaml"
+          blackhole-tournament --no-subprocess --repetitions 1 \
+            --custom-manifest "$RUNNER_TEMP/no-custom.yaml" \
+            --out "$RUNNER_TEMP/leaderboard-smoke.json"

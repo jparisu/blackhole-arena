@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# Testing / tooling
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# MkDocs
+site/
+
+# Generated web assets (assembled by scripts/build_web.py or the Pages workflow)
+web/py/
+web/py.zip
+web/leaderboard.json
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Private files
+tmp/
+devs/

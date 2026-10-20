@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documentation
+    url: https://blackhole-arena.readthedocs.io
+    about: Read the game rules, player API, and the submission guide.
+  - name: How to submit a new player
+    url: https://blackhole-arena.readthedocs.io/en/latest/game/upload-a-bot/submit-a-player/
+    about: Step-by-step guide to adding your AI by Pull Request.
+  - name: Code of Conduct
+    url: https://github.com/jparisu/blackhole-arena/blob/main/CODE_OF_CONDUCT.md
+    about: What is expected of everyone here, and how to report a breach.

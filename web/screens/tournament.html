@@ -1,0 +1,65 @@
+<section id="screen-tournament" class="screen hidden">
+  <h1>🎪 Tournament</h1>
+
+  <!-- Setup -->
+  <div class="panel tsetup" id="t-setup">
+    <div class="tsetup-grid">
+      <label>Bracket size
+        <select id="t-size">
+          <option value="4">4 players</option>
+          <option value="8" selected>8 players</option>
+          <option value="16">16 players</option>
+        </select>
+      </label>
+      <label>Random seed
+        <input id="t-seed" type="number" min="0" step="1" value="1" />
+      </label>
+      <label>Graph <span class="muted small">(every match is one game on it)</span>
+        <select id="t-graph"></select>
+      </label>
+    </div>
+    <div class="tslots" id="t-slots"></div>
+    <div class="btn-row">
+      <button id="t-start" class="btn primary">Start tournament</button>
+      <button id="t-shuffle" class="btn" title="Randomise the entrants">🎲 Randomise</button>
+      <button id="t-reset" class="btn hidden" title="Configure a new bracket">↺ New bracket</button>
+    </div>
+  </div>
+
+  <!-- Bracket -->
+  <div class="panel tbracket-wrap hidden" id="t-bracket-wrap">
+    <div class="tbracket-head">
+      <h3>Bracket</h3>
+      <span class="muted small" id="t-progress"></span>
+    </div>
+    <div class="sb-bracket" id="t-bracket"></div>
+    <p class="muted small">
+      Each match is one game: whoever scores more points advances, and a tie
+      goes to the upper entrant. Click any finished match to replay it.
+    </p>
+  </div>
+
+  <!-- Match view: live human match, or a replay of a finished one -->
+  <div class="panel tmatch hidden" id="t-match">
+    <div class="tmatch-head">
+      <span id="t-match-title" class="tmatch-title"></span>
+      <span id="t-match-sub" class="muted small"></span>
+    </div>
+    <div id="t-status" class="status"></div>
+    <div id="t-board" class="board"></div>
+    <div class="timeline hidden" id="t-timeline">
+      <button id="t-tl-first" class="btn small">⏮</button>
+      <button id="t-tl-prev" class="btn small">◀</button>
+      <input id="t-tl-slider" type="range" min="0" max="0" value="0" />
+      <button id="t-tl-next" class="btn small">▶</button>
+      <button id="t-tl-last" class="btn small">⏭</button>
+      <span id="t-tl-label" class="tl-label"></span>
+    </div>
+    <div class="btn-row">
+      <button id="t-close-view" class="btn hidden">Back to bracket</button>
+    </div>
+  </div>
+
+  <!-- Champion -->
+  <div class="tchampion hidden" id="t-champion"></div>
+</section>

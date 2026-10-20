@@ -1,0 +1,182 @@
+site_name: BlackHole Arena
+site_description: >-
+  BlackHole Arena — the reference manual of this project: the rules of the
+  BlackHole graph game, the player API to upload a bot, the tournament and the
+  web app.
+# Where the built site actually lives. This is NOT cosmetic: the i18n language
+# switcher builds its `<link rel="alternate">` hrefs from the *path* of site_url,
+# so a hardcoded root sends the English link to `/en/` — which on Read the Docs is
+# a language slug, not our subdirectory, and lands on an unstyled 404.
+# Read the Docs exports READTHEDOCS_CANONICAL_URL per build (per version, and per
+# pull-request preview), so the switcher stays inside whatever build you are
+# reading. The fallback is for local `mkdocs serve` / `mkdocs build`.
+site_url: !ENV [READTHEDOCS_CANONICAL_URL, "https://blackhole-arena.readthedocs.io/"]
+repo_url: https://github.com/jparisu/blackhole-arena
+repo_name: jparisu/blackhole-arena
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+  features:
+    - content.action.edit
+    - content.code.copy
+    # `navigation.indexes` turns the untitled `index.md` entries (`game/index.md`,
+    # `game/upload-a-bot/index.md`, ...) into the *landing page of their
+    # section*, clickable from the section title itself.
+    - navigation.indexes
+    - navigation.footer
+    # `navigation.instant` is deliberately absent: it is incompatible with the
+    # i18n language switcher's contextual link, and this site is bilingual.
+    #
+    # `navigation.sections` and `navigation.expand` are deliberately absent too:
+    # both hold the whole tree open at once, which flattens "Upload a new bot"
+    # and "Advanced documentation" into one long list and loses the distinction.
+    # Without them only the section you are reading is expanded.
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.suggest
+    - toc.follow
+
+extra_css:
+  - stylesheets/extra.css
+
+# A link to a heading that does not exist is only an INFO by default, so a
+# renamed section silently breaks every link into it. Promoting it to a warning
+# makes `mkdocs build --strict` — what CI runs — catch it.
+validation:
+  anchors: warn
+
+# Titles here are in Spanish because Spanish is the default locale;
+# `nav_translations` under the `en` locale maps each one to English.
+#
+#   El juego (The game) — the reference manual of THIS repository. It splits by
+#       who is reading: everyone starts at the rules, `Subir un bot nuevo` is
+#       the path for someone writing an AI, and `Documentación avanzada` is the
+#       machinery behind it.
+nav:
+  - Inicio: index.md
+  - El juego:
+      - game/index.md
+      - Reglas del juego: game/rules.md
+      - Subir un bot nuevo:
+          - game/upload-a-bot/index.md
+          - 1. API de jugador: game/upload-a-bot/player-api.md
+          - 2. Enviar un jugador: game/upload-a-bot/submit-a-player.md
+      - Documentación avanzada:
+          - game/advanced/index.md
+          - Primeros pasos: game/advanced/getting-started.md
+          - Estructura del código: game/advanced/code-structure.md
+          - El marcador: game/advanced/scoreboard.md
+          - El torneo: game/advanced/tournament.md
+          - La página web: game/advanced/web.md
+          - Referencia de la API: game/advanced/api.md
+
+markdown_extensions:
+  - admonition
+  # attr_list + md_in_html are what make Material's `<div class="grid cards" markdown>`
+  # blocks render (see docs/index.md). Without them the block is emitted as a raw
+  # <div> wrapping unprocessed Markdown — and MkDocs reports no warning, so even
+  # `mkdocs build --strict` stays green while the page is visibly broken.
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  # Renders `:material-xxx:` shortcodes as inline SVG icons instead of literal text.
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  # The custom fence is what turns ```mermaid blocks into diagrams instead of
+  # printing the diagram source as code. Every diagram is drawn this way — the
+  # graphs on the rules page included — so there is not a single image file in
+  # docs/.
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  # Renders `- [ ]` / `- [x]` as checkboxes.
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - tables
+  - toc:
+      permalink: true
+
+plugins:
+  # Order matters: `i18n` reconfigures the search index per language, so it has
+  # to see a `search` instance that is already registered.
+  - search
+  - i18n:
+      docs_structure: suffix
+      # A page without a `.en.md` twin still appears in the English build, in
+      # Spanish, instead of vanishing from the navigation. Translations can then
+      # be added one page at a time.
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        # Spanish is the DEFAULT locale, which with `docs_structure: suffix`
+        # means it owns the files with no suffix (`rules.md`) and is served at
+        # the site root. English lives in `rules.en.md` and is served under
+        # `/en/`. The plugin refuses any other arrangement: the default language
+        # must be the unsuffixed one.
+        - locale: es
+          name: Español
+          default: true
+          build: true
+        - locale: en
+          name: English
+          build: true
+          site_description: >-
+            BlackHole Arena — the reference manual of this project: the rules
+            of the BlackHole graph game, the player API to upload a bot, the
+            tournament and the web app.
+          # The `nav:` titles above are Spanish, so these map Spanish -> English.
+          nav_translations:
+            Inicio: Home
+            El juego: The game
+            Reglas del juego: Game rules
+            Subir un bot nuevo: Upload a new bot
+            1. API de jugador: 1. Player API
+            2. Enviar un jugador: 2. Submit a player
+            Documentación avanzada: Advanced documentation
+            Primeros pasos: Getting started
+            Estructura del código: Code structure
+            El marcador: The scoreboard
+            El torneo: The tournament
+            La página web: The web app
+            Referencia de la API: API reference
+  # Declared explicitly (mkdocstrings would otherwise add it implicitly) so that
+  # `resolve_closest` can be set. Every `:::` block is rendered once per language,
+  # so each identifier legitimately has two URLs — `/game/...` and `/en/game/...`.
+  # Without this, autorefs warns about "multiple primary URLs" and `--strict`
+  # fails; with it, a link resolves to the page in the reader's own language.
+  - autorefs:
+      resolve_closest: true
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            show_source: true
+            show_root_heading: true
+            docstring_style: google

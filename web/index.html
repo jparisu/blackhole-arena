@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BlackHole Arena</title>
+    <meta
+      name="description"
+      content="Play BlackHole on any graph against humans or AIs — the Python engine runs live in your browser via Pyodide."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🕳️</text></svg>"
+    />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand" data-nav="menu">
+        <span class="logo">🕳️</span> BlackHole&nbsp;<span class="accent">Arena</span>
+      </div>
+      <nav class="nav">
+        <button data-nav="menu" class="link">Menu</button>
+        <button data-nav="game" class="link">Play</button>
+        <button data-nav="scoreboard" class="link">Scoreboard</button>
+        <button data-nav="tournament" class="link">Tournament</button>
+        <button data-nav="about" class="link">About</button>
+        <button id="theme-toggle" class="link" title="Toggle light/dark">🌗</button>
+      </nav>
+    </header>
+
+    <!-- Boot / loading overlay -->
+    <div id="boot" class="boot">
+      <div class="boot-card">
+        <div class="spinner"></div>
+        <h2>Waking up the arena…</h2>
+        <p id="boot-status">Loading Pyodide…</p>
+        <p class="boot-note">
+          The Python game engine and AIs are downloading to run in your browser.
+        </p>
+      </div>
+    </div>
+
+    <!-- Loud, persistent error surface. A blank page with a dead button is the
+         least debuggable failure there is, so anything that escapes lands here. -->
+    <div id="fatal" class="fatal hidden"></div>
+
+    <!-- Screens are separate files under screens/ and injected here at boot.
+         One page, one Pyodide instance: separate HTML pages would each re-boot
+         the Python engine, several seconds every time you switch tab. -->
+    <main id="screens"></main>
+
+    <footer class="footer">
+      <span>Runs real Python via Pyodide · no backend</span>
+      <a href="https://github.com/jparisu/blackhole-arena" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://blackhole-arena.readthedocs.io" target="_blank" rel="noopener">Docs</a>
+    </footer>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="pyodide-bootstrap.js"></script>
+    <!-- Order matters: core defines the helpers the screens use, main boots last. -->
+    <script src="js/core.js"></script>
+    <script src="js/play.js"></script>
+    <script src="js/scoreboard.js"></script>
+    <script src="js/tournament.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

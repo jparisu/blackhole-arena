@@ -1,0 +1,43 @@
+name: Docs
+
+# Builds the MkDocs site to catch broken docs early. Read the Docs also builds
+# the docs on push (see .readthedocs.yaml); this job is the fast CI check.
+on:
+  push:
+    branches: [main]
+    # Skip the scheduled leaderboard commits, which cannot affect the docs.
+    paths-ignore:
+      - "results/**"
+  # Deliberately NOT path-filtered. This workflow is a required status check
+  # (see MAINTAINING.md), and a filtered workflow that does not run leaves its
+  # check permanently "expected" — which blocks the merge forever. A new-player
+  # PR touches only players/custom/, so a docs/** filter here would
+  # make every single student submission unmergeable. The build takes ~25s.
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[docs]"
+
+      - name: Build (strict)
+        run: mkdocs build --strict

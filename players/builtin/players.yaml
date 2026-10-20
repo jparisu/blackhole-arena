@@ -1,0 +1,39 @@
+# BlackHole Arena — the BUILT-IN player manifest.
+#
+# This file admits the reference players that ship with the project. It is
+# maintained by the repository owner. A submission does NOT go here: it goes in
+# ../custom/players.yaml, next to its own .py file.
+#
+# Discovery happens ONLY through a manifest — nothing auto-scans a folder. When
+# someone opens a PR to add a bot, the reviewer sees, in one diff, both the new
+# file and the single line that admits it. The review IS the security gate.
+#
+# A manifest is an *admission list*: which file, and which class in it. A
+# player's name, authors, description and icon are declared by the class itself
+# (get_name / get_authors / ...), so there is exactly one source of truth and
+# nothing here to drift out of step with the code.
+#
+# Each entry has:
+#   file    path to the .py file. A bare filename is resolved next to THIS
+#           manifest; a path with '/' is resolved from the repo root.
+#   class   the Player subclass to admit.
+
+players:
+  # Each entry is a thin wrapper that names a strategy from blackholearena.bots.
+  # The baseline: a uniformly random free node.
+  - file: random.py
+    class: Random
+
+  # One rule: play next to a free node.
+  - file: easy.py
+    class: Easy
+
+  # Three searches over the same engine, differing only in what they want.
+  - file: aggressive_max.py
+    class: AggressiveMax
+
+  - file: aggressive_min.py
+    class: AggressiveMin
+
+  - file: cooperative.py
+    class: Cooperative

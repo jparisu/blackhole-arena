@@ -1,0 +1,85 @@
+<section id="screen-scoreboard" class="screen hidden">
+  <h1>🏆 <span id="sb-title">Tournament</span></h1>
+  <p class="muted" id="sb-meta">Loading latest tournament results…</p>
+
+  <div id="sb-empty" class="sb-empty hidden"></div>
+
+  <!-- Player filter: everything below reacts to this selection. -->
+  <div class="sb-filterbar" id="sb-filterbar">
+    <details class="sb-filter" id="sb-filter">
+      <summary class="btn">
+        <span>Players</span>
+        <span class="sb-filter-count" id="sb-filter-count"></span>
+        <span class="sb-filter-caret">▾</span>
+      </summary>
+      <div class="sb-filter-panel">
+        <div class="sb-filter-actions">
+          <button class="btn small" id="sb-filter-all">Select all</button>
+          <button class="btn small" id="sb-filter-none">Deselect all</button>
+        </div>
+        <div class="sb-filter-list" id="sb-filter-list"></div>
+      </div>
+    </details>
+    <span class="muted small" id="sb-filter-hint"></span>
+  </div>
+
+  <div class="sb-layout" id="sb-layout">
+    <!-- Center: collapsible blocks -->
+    <div class="sb-center">
+      <details class="sb-block" id="sb-block-radar" open>
+        <summary>
+          <span class="sb-block-title">Player comparison</span>
+          <span class="sb-sub" id="sb-radar-sub"></span>
+        </summary>
+        <div class="sb-block-body" id="sb-radar"></div>
+      </details>
+
+      <details class="sb-block" id="sb-block-structure" open>
+        <summary>
+          <span class="sb-block-title">Tournament</span>
+          <span class="sb-sub" id="sb-structure-sub"></span>
+        </summary>
+        <div class="sb-block-body" id="sb-structure"></div>
+      </details>
+
+      <details class="sb-block" open>
+        <summary>
+          <span class="sb-block-title">Match summary</span>
+          <span class="sb-sub" id="sb-matches-sub"></span>
+        </summary>
+        <div class="sb-block-body" id="sb-matches"></div>
+      </details>
+
+      <details class="sb-block">
+        <summary>
+          <span class="sb-block-title">Player stats</span>
+          <span class="sb-sub" id="sb-players-sub"></span>
+        </summary>
+        <div class="sb-block-body" id="sb-playerstats"></div>
+      </details>
+
+      <details class="sb-block">
+        <summary>
+          <span class="sb-block-title">Total stats</span>
+          <span class="sb-sub" id="sb-totals-sub"></span>
+        </summary>
+        <div class="sb-block-body" id="sb-totals"></div>
+      </details>
+    </div>
+
+    <!-- Right wing: classification -->
+    <aside class="sb-side">
+      <div class="sb-side-inner">
+        <h3 id="sb-class-title">Classification</h3>
+        <ol class="sb-standings" id="sb-standings"></ol>
+      </div>
+    </aside>
+  </div>
+
+  <p class="muted small">
+    Produced entirely by the
+    <a href="https://github.com/jparisu/blackhole-arena/actions/workflows/tournament.yml"
+       target="_blank" rel="noopener">tournament GitHub Action</a>,
+    which commits <code>results/leaderboard.json</code>.
+  </p>
+</section>

@@ -1,0 +1,92 @@
+name: Tournament
+
+# Runs the round-robin and opens (or updates) a pull request with the new
+# results/leaderboard.json. Merging that PR redeploys the Pages scoreboard.
+# Runs on every push to main, weekly, and on demand.
+#
+# Timing is measured HERE, on GitHub's runners (slower and more variable than a
+# laptop) — the budget below is deliberately generous. It is a per-player budget
+# for a WHOLE GAME, plus the same again for constructing the player. See the docs.
+on:
+  workflow_dispatch:
+    inputs:
+      tournament:
+        description: "Tournament format"
+        type: choice
+        options: [simple, league, championship]
+        default: league
+        required: false
+      time_limit:
+        description: "Per-player budget in seconds (a whole game, and construction)"
+        default: "2.0"
+        required: false
+  schedule:
+    - cron: "0 6 * * 1" # every Monday 06:00 UTC
+  push:
+    branches: [main]
+    # Merging the results PR is itself a push to main. Without this filter that
+    # merge would start a new tournament, which opens a new PR, forever.
+    paths-ignore:
+      - "results/**"
+
+permissions:
+  contents: write # push the results branch
+  pull-requests: write # open the results pull request
+
+concurrency:
+  group: tournament
+  cancel-in-progress: false
+
+jobs:
+  tournament:
+    runs-on: ubuntu-latest
+    # A run-level ceiling. The per-game budget bounds ONE game (~8.5 s worst
+    # case); nothing bounds games x matchups, which grows as O(roster^2). Past
+    # about five player kinds the theoretical worst case already exceeds
+    # GitHub's 6 h job limit — at which point the job is killed and produces NO
+    # leaderboard at all. Failing in 90 minutes is a visible, diagnosable
+    # failure instead of a six-hour silent one.
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Run the tournament (one forked process per game, hard timeout)
+        run: |
+          blackhole-tournament \
+            --out results/leaderboard.json \
+            --tournament "${{ github.event.inputs.tournament || 'league' }}" \
+            --time-limit "${{ github.event.inputs.time_limit || '2.0' }}"
+
+      - name: Open or update the leaderboard pull request
+        # Always the same branch, force-pushed from main, so there is at most one
+        # open results PR and it always holds only the latest run.
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: tournament/leaderboard
+        run: |
+          if git diff --quiet -- results/leaderboard.json; then
+            echo "Leaderboard unchanged; nothing to propose."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add results/leaderboard.json
+          git commit -m "chore(tournament): update leaderboard"
+          git push --force origin "$BRANCH"
+          if [ -n "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
+            echo "Updated the open leaderboard pull request."
+          else
+            gh pr create --base main --head "$BRANCH" \
+              --title "chore(tournament): update leaderboard" \
+              --body "Automatic results from the Tournament workflow, run ${{ github.run_id }}. Merge to publish the scoreboard."
+          fi

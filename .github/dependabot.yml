@@ -1,0 +1,29 @@
+# Keep CI actions and Python dependencies from silently rotting.
+#
+# The action versions matter most here: a workflow pinned to a major that GitHub
+# retires starts failing with no code change on our side, which over a long
+# vacation looks like the repo broke by itself.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "chore(ci)"
+    labels: [dependencies]
+    groups:
+      # One PR per month for all action bumps, rather than four.
+      actions:
+        patterns: ["*"]
+
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "chore(deps)"
+    labels: [dependencies]
+    # Only the tooling floors are declared in pyproject, so bumps are advisory:
+    # review them, do not merge blindly.
+    open-pull-requests-limit: 3

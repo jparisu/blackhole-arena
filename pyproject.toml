@@ -1,0 +1,122 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "blackholearena"
+version = "0.1.0"
+description = "Parametrized BlackHole: a graph game engine, a reference AI, a tournament runner, and a clean player API."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "jparisu" }]
+keywords = ["blackhole", "game", "graph", "ai", "minimax", "tournament", "education"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Education",
+    "Topic :: Games/Entertainment :: Board Games",
+]
+dependencies = [
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.4",
+    "mypy>=1.11",
+    "types-PyYAML",
+]
+docs = [
+    "mkdocs>=1.6",
+    "mkdocs-material>=9.5",
+    "mkdocstrings[python]>=0.25",
+    # The site ships in English and Spanish. The suffix convention (`page.es.md`
+    # next to `page.md`) keeps both languages in one tree and one nav.
+    "mkdocs-static-i18n>=1.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/jparisu/blackhole-arena"
+Documentation = "https://blackhole-arena.readthedocs.io"
+Repository = "https://github.com/jparisu/blackhole-arena"
+"Live demo" = "https://jparisu.github.io/blackhole-arena"
+
+[project.scripts]
+blackhole-tournament = "blackholearena.tournament:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/blackholearena"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+# Submitted players are linted by the Custom players workflow (`ruff check
+# players/custom`), not by the repo-wide run, so one bad submission cannot fail
+# every unrelated pull request.
+extend-exclude = ["players/custom"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "W"]
+ignore = ["E501"]
+
+[tool.mypy]
+# 3.10 is the floor pyproject promises, so check against it.
+python_version = "3.10"
+files = ["src", "players", "scripts", "tests", "conftest.py"]
+# Without these, mypy derives a module name from the bare filename, so
+# players/builtin/random.py becomes module `random` and SHADOWS the standard
+# library — every `import random` in the package then resolved to the player class.
+# Naming the roots explicitly makes it `players.builtin.random`, as it is at runtime.
+# `web` is a root, not a package: conftest.py puts it on sys.path at runtime, so
+# the bridge is importable as `webglue` — mypy must see it the same way, or the
+# module gets two names. It is still checked, because the tests import it.
+mypy_path = "src:web:."
+explicit_package_bases = true
+namespace_packages = true
+# Same reason as ruff's extend-exclude above: submitted players are type-checked
+# by the Custom players workflow (`mypy players/custom`). Naming a file on the
+# command line overrides this exclusion, which is what that workflow relies on.
+exclude = "^players/custom/"
+# Everything shipped must be annotated. `strict` is deliberately NOT used: it also
+# demands TypedDicts for the JSON result payloads, which would be a large refactor
+# for little gain — the payload is validated by tests against a documented schema.
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_unreachable = true
+strict_equality = true
+show_error_codes = true
+pretty = true
+
+[[tool.mypy.overrides]]
+# The tests ARE checked, but not required to annotate every fixture and stub —
+# that is noise, not safety.
+module = ["tests.*", "conftest"]
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+[[tool.mypy.overrides]]
+# pytest ships py.typed, so mypy follows into _pytest internals, which import
+# numpy. numpy's stubs use 3.12 `type` aliases and cannot parse under
+# python_version 3.10; and in CI numpy is not installed at all, so it would fail
+# there for the opposite reason. Neither is this project's code — do not analyse
+# the test runner's own internals.
+module = ["numpy.*", "_pytest.*", "pytest.*"]
+follow_imports = "skip"
+follow_imports_for_stubs = true

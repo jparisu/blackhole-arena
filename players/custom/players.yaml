@@ -1,0 +1,22 @@
+# BlackHole Arena — the SUBMITTED player manifest.
+#
+# This is where a new player is admitted. Add your .py file to this folder and
+# ONE entry below, then open a pull request. Nothing auto-scans the folder: the
+# reviewer sees your file and the line that admits it in the same diff, which is
+# exactly what makes the review the security gate.
+#
+# Each entry has:
+#   file    path to the .py file. A bare filename is resolved next to THIS
+#           manifest; a path with '/' is resolved from the repo root.
+#   class   the Player subclass to admit.
+#
+# Your player's name, authors, description and icon come from the class itself,
+# so there is nothing here to keep in step with your code. The name must be
+# unique across every admitted player; CI rejects a duplicate.
+#
+# Example — copy this shape, do not uncomment it:
+#
+#   - file: my_bot.py
+#     class: MyBot
+
+players: []

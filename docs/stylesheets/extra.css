@@ -1,0 +1,68 @@
+/* Project-specific tweaks on top of the Material theme. */
+
+/* Keep tables readable when they carry long reference listings (the CLI flag
+ * table, the leaderboard schema, the game helper functions). */
+.md-typeset table:not([class]) {
+  font-size: 0.75rem;
+}
+
+/* Give Mermaid diagrams some breathing room. */
+.md-typeset .mermaid {
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+/* Slightly wider content area: the code samples and the leaderboard
+ * schema tables are cramped at the default width. */
+.md-grid {
+  max-width: 62rem;
+}
+
+/* ---------------------------------------------------------------------------
+ * Breathing room.
+ *
+ * These pages are long and text-heavy, and a reader who cannot see where one
+ * section ends gets tired before they get lost. Section rules are the visual
+ * anchor: every `---` between two `##` blocks becomes a quiet full-width line
+ * with real space around it, and headings get room of their own.
+ * ------------------------------------------------------------------------ */
+
+.md-typeset hr {
+  margin: 2.6em 0;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset h2 {
+  margin-top: 1.4em;
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* A rule immediately followed by a heading would draw two lines a few pixels
+ * apart; the heading's own rule is the one that stays. */
+.md-typeset hr + h2 {
+  margin-top: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.md-typeset h3 {
+  margin-top: 1.6em;
+}
+
+/* Tables carry a lot of the reference load here. Give the header row some
+ * weight so a table reads as a block rather than as more prose. */
+.md-typeset table:not([class]) th {
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+/* Diagrams and admonitions sit between paragraphs; keep them from crowding. */
+.md-typeset .admonition,
+.md-typeset details {
+  margin: 1.4em 0;
+}
+
+/* The landing-page button row. */
+.md-typeset .md-button {
+  margin: 0.2em 0.4em 0.2em 0;
+}

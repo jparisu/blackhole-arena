@@ -1,0 +1,63 @@
+name: Custom players
+
+# Checks ONLY the players submitted in players/custom/. It is a separate workflow
+# on purpose: a broken submission must fail its own check, not the Tests workflow
+# that every other pull request depends on. That is also why pyproject excludes
+# players/custom/ from the repo-wide ruff and mypy runs and re-checks it here.
+#
+# The suite discovers players from players/custom/players.yaml, so a new bot is
+# covered as soon as its manifest line lands — there is nothing to add here.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "players/custom/**"
+      - "tests/test_custom_players.py"
+      - ".github/workflows/custom-players.yml"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: custom-players-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  custom-players:
+    runs-on: ubuntu-latest
+    # A hung bot is killed per game by the runner's own deadline; this is the
+    # backstop for a submission that is merely very slow, many times over.
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Lint the submitted players (ruff)
+        run: ruff check players/custom
+
+      - name: Type check the submitted players (mypy)
+        # Files are named explicitly: mypy applies the pyproject `exclude` when it
+        # expands a directory, but not to paths given on the command line.
+        run: |
+          files=$(find players/custom -name '*.py')
+          if [ -n "$files" ]; then mypy $files; else echo "No submitted players."; fi
+
+      - name: Test the submitted players
+        run: pytest -q tests/test_custom_players.py
+
+      - name: Smoke-run the tournament with the submitted players
+        # One forked process per game (no --no-subprocess), so a bot that hangs is
+        # killed instead of stalling the job. Forfeits do not fail the run by
+        # themselves — the pytest step above is what asserts a clean game.
+        run: blackhole-tournament --repetitions 1 --out "$RUNNER_TEMP/leaderboard-custom.json"

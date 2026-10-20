@@ -1,0 +1,74 @@
+name: Pages
+
+# Assembles the static web app (bundles the shared Python into py.zip and copies
+# the latest leaderboard) and deploys it to GitHub Pages.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "web/**"
+      - "src/**"
+      - "players/**"
+      - "results/leaderboard.json"
+      - "scripts/build_web.py"
+      - ".github/workflows/pages.yml"
+
+  # The scheduled Tournament commits results/leaderboard.json, and the `push`
+  # trigger above lists that path so a fresh result redeploys the scoreboard.
+  # That does NOT work on its own: the Tournament pushes using the default
+  # GITHUB_TOKEN, and GitHub deliberately does not raise `push` events for
+  # commits made with GITHUB_TOKEN (it is how recursive workflow loops are
+  # prevented). So the push trigger is silently dead for exactly the case it was
+  # written for. `workflow_run` is the documented way out: react to the
+  # Tournament *workflow* finishing rather than to its commit.
+  workflow_run:
+    workflows: ["Tournament"]
+    types: [completed]
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  # false, per GitHub's own Pages guidance: cancelling mid-publish can leave the
+  # deployment in a half-applied state. Queue instead.
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Do not publish a scoreboard from a Tournament that failed. Non-workflow_run
+    # triggers (push, manual dispatch) carry no conclusion, so they always pass.
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Assemble web assets
+        run: python scripts/build_web.py
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: web
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,54 @@
+<section id="screen-about" class="screen hidden">
+  <div class="prose">
+    <h1>About BlackHole Arena</h1>
+    <p>
+      BlackHole is played by two players on a graph of <strong>2N + 1</strong>
+      nodes. Each player has <strong>N</strong> turns: on your
+      <em>n</em>-th turn you place <strong>n tiles</strong> on a free node. After
+      the 2N turns exactly one node is still free — that node is the
+      <strong>black hole</strong>.
+    </p>
+    <p>
+      Each player scores the tiles it placed on the nodes <strong>next to the
+      black hole</strong>. Everything else is lost.
+    </p>
+    <h2>Not a zero-sum game</h2>
+    <p>
+      Each player tries to maximize <strong>its own score</strong>. Both players
+      can score well in the same game, or both badly. That is why the tournament
+      ranks players by the <strong>points</strong> they collect over all their
+      games, not by how many games they "won".
+    </p>
+    <h2>X-ray mode</h2>
+    <p>
+      Turn on <em>X-ray</em> during a game to see, under every free node, what
+      each player would score if that node became the black hole right now.
+      Remember that the biggest moves come last: a player's final turn places
+      N tiles at once.
+    </p>
+    <h2>One source of truth</h2>
+    <p>
+      The game rules and every AI are written once, in Python. This page
+      loads that exact code through <strong>Pyodide</strong> (Python compiled
+      to WebAssembly) — the rules are never re-implemented in JavaScript. The
+      same code also runs the automated tournament in GitHub Actions.
+    </p>
+    <h2>Add your own AI</h2>
+    <p>
+      Anyone can submit a new player by Pull Request. See the
+      <a href="https://blackhole-arena.readthedocs.io" target="_blank" rel="noopener">documentation</a>
+      and the
+      <a href="https://github.com/jparisu/blackhole-arena" target="_blank" rel="noopener">repository</a>.
+    </p>
+
+    <h2>Author</h2>
+    <p class="author">
+      Built by <strong>Javier Paris</strong> —
+      <a href="https://github.com/jparisu" target="_blank" rel="noopener">github.com/jparisu</a>
+    </p>
+    <p class="muted small">
+      Source, issues and pull requests:
+      <a href="https://github.com/jparisu/blackhole-arena" target="_blank" rel="noopener">jparisu/blackhole-arena</a>
+    </p>
+  </div>
+</section>
