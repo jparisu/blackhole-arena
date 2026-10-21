@@ -59,15 +59,35 @@ def grid(rows: int = 3, cols: int = 3) -> State:
     return new_game(rows * cols, edges)
 
 
-def random_graph(nodes: int, density: float = 0.4, seed: int | None = None) -> State:
-    """A random connected graph: a random spanning tree plus extra random edges.
+def _chords_cross(e: tuple[int, int], f: tuple[int, int]) -> bool:
+    """Return whether two edges cross when the nodes sit on a circle in index order.
 
-    The spanning tree guarantees every node has a neighbour, so no node is a
-    dead loss for whoever plays on it.
+    Edges ``(a, b)`` and ``(c, d)``, with ``a < b`` and ``c < d``, cross exactly
+    when one endpoint of ``(c, d)`` lies strictly inside the arc ``a..b`` and the
+    other strictly outside it. Edges sharing an endpoint never cross.
+    """
+    (a, b), (c, d) = e, f
+    return a < c < b < d or c < a < d < b
+
+
+def random_graph(nodes: int, density: float = 0.4, seed: int | None = None) -> State:
+    """A random connected graph that can always be drawn without crossing edges.
+
+    Every edge is a chord of the polygon whose corners are the nodes in index
+    order, and no two chords cross — an *outerplanar* graph. Placing the nodes on
+    a circle in index order therefore draws it with no crossings, which is what
+    the web board falls back to.
+
+    It is built as a random non-crossing spanning tree plus extra random
+    non-crossing edges. The spanning tree guarantees every node has a neighbour,
+    so no node is a dead loss for whoever plays on it. It always exists: a side of
+    the polygon, ``(i, i + 1)``, crosses no chord, so two separate components can
+    always be joined.
 
     Args:
         nodes: number of nodes, odd and at least 3.
-        density: probability of each *extra* edge, in ``[0, 1]``.
+        density: probability of each *extra* edge that would cross no edge
+            already chosen, in ``[0, 1]``.
         seed: seed for a private RNG, so the same arguments give the same graph.
 
     Raises:
@@ -76,16 +96,32 @@ def random_graph(nodes: int, density: float = 0.4, seed: int | None = None) -> S
     if not 0.0 <= density <= 1.0:
         raise ValueError(f"density must be in [0, 1], got {density}")
     rng = random.Random(seed)
-    order = list(range(nodes))
-    rng.shuffle(order)
-    edges: set[tuple[int, int]] = set()
-    for i in range(1, len(order)):
-        a, b = order[i], order[rng.randrange(i)]
-        edges.add((min(a, b), max(a, b)))
-    for a in range(nodes):
-        for b in range(a + 1, nodes):
-            if (a, b) not in edges and rng.random() < density:
-                edges.add((a, b))
+    pairs = [(a, b) for a in range(nodes) for b in range(a + 1, nodes)]
+    rng.shuffle(pairs)
+    edges: list[tuple[int, int]] = []
+
+    def crosses_any(pair: tuple[int, int]) -> bool:
+        return any(_chords_cross(pair, e) for e in edges)
+
+    # Random non-crossing spanning tree (Kruskal over shuffled pairs).
+    component = list(range(nodes))
+
+    def root(v: int) -> int:
+        while component[v] != v:
+            component[v] = component[component[v]]
+            v = component[v]
+        return v
+
+    for a, b in pairs:
+        ra, rb = root(a), root(b)
+        if ra != rb and not crosses_any((a, b)):
+            component[ra] = rb
+            edges.append((a, b))
+
+    # Extra edges, each kept with probability `density` if it crosses nothing.
+    for pair in pairs:
+        if pair not in edges and rng.random() < density and not crosses_any(pair):
+            edges.append(pair)
     return new_game(nodes, [list(e) for e in sorted(edges)])
 
 

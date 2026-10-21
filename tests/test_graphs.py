@@ -51,6 +51,20 @@ def test_random_graph_is_connected_and_reproducible():
     assert graphs.random_graph(11, 0.2, seed=6) != a
 
 
+@pytest.mark.parametrize("nodes", [3, 5, 7, 9, 11, 13])
+@pytest.mark.parametrize("density", [0.0, 0.3, 1.0])
+def test_random_graph_has_no_crossing_edges_on_a_circle(nodes, density):
+    # The web board draws a random graph with its nodes on a circle in index
+    # order, so no two edges may interleave around it.
+    for seed in range(30):
+        state = graphs.random_graph(nodes, density, seed=seed)
+        edges = [tuple(e) for e in state["edges"]]
+        assert _connected(state)
+        for i, (a, b) in enumerate(edges):
+            for c, d in edges[i + 1 :]:
+                assert not (a < c < b < d or c < a < d < b), (seed, (a, b), (c, d))
+
+
 def test_random_graph_rejects_a_bad_density():
     with pytest.raises(ValueError):
         graphs.random_graph(5, 1.5, seed=0)

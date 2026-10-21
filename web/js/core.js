@@ -161,15 +161,36 @@ const LAYOUT_ITERATIONS = 300;
 const LAYOUT_CACHE = new Map();
 
 /* Node positions for a graph, in board coordinates.
-   A deterministic Fruchterman–Reingold spring layout started from a circle: no
-   randomness, so the same graph always looks the same — on the Play screen, in a
-   replay, and after a reload. Cached per graph, so scrubbing a timeline never
-   re-runs it. */
+   Two deterministic candidates, and the one whose edges cross less wins (the
+   spring layout on a tie, as it reads better):
+
+     * a Fruchterman–Reingold spring layout started from a circle;
+     * the nodes on an ellipse in index order. Random graphs are built so that
+       this draws them with no crossing at all (see graphs.random_graph), so a
+       random graph is always crossing-free.
+
+   No randomness, so the same graph always looks the same — on the Play screen,
+   in a replay, and after a reload. Cached per graph, so scrubbing a timeline
+   never re-runs it. */
 function graphLayout(state) {
   const n = state.owner.length;
   const key = `${n}|${JSON.stringify(state.edges)}`;
   if (LAYOUT_CACHE.has(key)) return LAYOUT_CACHE.get(key);
 
+  const spring = fitToBoard(springLayout(state));
+  const springCrossings = countCrossings(spring, state.edges);
+  let out = spring;
+  if (springCrossings > 0) {
+    const ring = fitToBoard(ringLayout(n));
+    if (countCrossings(ring, state.edges) < springCrossings) out = ring;
+  }
+  LAYOUT_CACHE.set(key, out);
+  return out;
+}
+
+/* Spring layout in abstract coordinates (roughly a 2x2 square). */
+function springLayout(state) {
+  const n = state.owner.length;
   const pos = Array.from({ length: n }, (_, i) => {
     const a = (2 * Math.PI * i) / n - Math.PI / 2;
     return [Math.cos(a), Math.sin(a)];
@@ -204,8 +225,58 @@ function graphLayout(state) {
     }
     temp *= 0.985;
   }
+  return pos;
+}
 
-  // Fit into the board, keeping the aspect ratio.
+/* Nodes 0..n-1 on an ellipse with the board's proportions, in index order, at
+   equal arc length — equal angles would crowd the ends of the long axis. Every
+   point is a corner of a convex polygon, so two edges cross only when their
+   endpoints interleave around it. */
+const RING_SAMPLES = 720;
+
+function ringLayout(n) {
+  const rx = (BOARD_W - 2 * BOARD_MARGIN) / 2;
+  const ry = (BOARD_H - 2 * BOARD_MARGIN) / 2;
+  const at = (t) => [rx * Math.cos(t), ry * Math.sin(t)];
+  const start = -Math.PI / 2;
+  // Cumulative arc length at each sample along the ellipse.
+  const lengths = [0];
+  let prev = at(start);
+  for (let s = 1; s <= RING_SAMPLES; s++) {
+    const p = at(start + (2 * Math.PI * s) / RING_SAMPLES);
+    lengths.push(lengths[s - 1] + Math.hypot(p[0] - prev[0], p[1] - prev[1]));
+    prev = p;
+  }
+  const total = lengths[RING_SAMPLES];
+  const pos = [];
+  let s = 0;
+  for (let i = 0; i < n; i++) {
+    const target = (total * i) / n;
+    while (lengths[s + 1] < target) s++;
+    pos.push(at(start + (2 * Math.PI * s) / RING_SAMPLES));
+  }
+  return pos;
+}
+
+/* Number of pairs of edges that cross. Edges sharing a node never count. */
+function countCrossings(pos, edges) {
+  const side = (p, q, r) => Math.sign((q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]));
+  let count = 0;
+  for (let i = 0; i < edges.length; i++) {
+    const [a, b] = edges[i];
+    for (let j = i + 1; j < edges.length; j++) {
+      const [c, d] = edges[j];
+      if (a === c || a === d || b === c || b === d) continue;
+      if (side(pos[a], pos[b], pos[c]) * side(pos[a], pos[b], pos[d]) < 0 &&
+          side(pos[c], pos[d], pos[a]) * side(pos[c], pos[d], pos[b]) < 0) count++;
+    }
+  }
+  return count;
+}
+
+/* Scale abstract positions onto the board, keeping the aspect ratio, then make
+   sure every node can be clicked. */
+function fitToBoard(pos) {
   const xs = pos.map((p) => p[0]);
   const ys = pos.map((p) => p[1]);
   const [minX, maxX, minY, maxY] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
@@ -217,7 +288,6 @@ function graphLayout(state) {
   const offY = (BOARD_H - (maxY - minY) * scale) / 2;
   const out = pos.map(([x, y]) => [offX + (x - minX) * scale, offY + (y - minY) * scale]);
   separateNodes(out);
-  LAYOUT_CACHE.set(key, out);
   return out;
 }
 
