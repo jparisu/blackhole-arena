@@ -21,8 +21,15 @@ TIE = -1
 class DrJekyllBot(Player):
     """Maximizes its own points, or plays minimax against an adversarial opponent."""
 
-    def __init__(self, seed: int | None = None) -> None:
+    def __init__(self, seed: int | None = None, start_in_war: bool = False, force_win: bool = True) -> None:
         self._rng = random.Random(seed)
+
+        # Store whether each game starts in war mode instead of peace
+        self._start_in_war = start_in_war
+
+        # Store whether only winning moves are considered, when any exists
+        self._force_win = force_win
+
         self._new_game()
 
     def _new_game(self) -> None:
@@ -32,7 +39,7 @@ class DrJekyllBot(Player):
         self._memo: dict[tuple[Any, ...], DrJekyllBot.StateScore] = {}
 
         # Store wether it shall play peacefully or aggressive
-        self._retaliation_mood = False
+        self._retaliation_mood = self._start_in_war
 
         # Store my seat in game
         self._my_seat: int | None = None
@@ -81,7 +88,8 @@ class DrJekyllBot(Player):
         # Check future actions
         current_player = to_move(state)
         moves = {move: self._search(apply_move(state, move), depth) for move in legal_moves(state)}
-        moves = self.__select_correct_moves(moves, current_player)
+        if self._force_win:
+            moves = self.__select_correct_moves(moves, current_player)
 
         # Select move depending mood
         move = self._select_best_move(
@@ -118,8 +126,12 @@ class DrJekyllBot(Player):
         # A peaceful opponent picks its own best move; if several, assume the worst one for me
         opponent = to_move(before)
         me = self._other_player(opponent)
+        if self._force_win:
+            replies_considered = self.__select_correct_moves(replies, opponent)
+        else:
+            replies_considered = replies
         peaceful_moves = self.__select_best_move(
-            moves=self.__select_correct_moves(replies, opponent),
+            moves=replies_considered,
             current_player=opponent,
             peace=True)
         expected = min(replies[m].peace_score[me] for m in peaceful_moves)
@@ -192,16 +204,19 @@ class DrJekyllBot(Player):
         complete = all(s.complete for s in scores.values())
 
         # Select only those moves that win the match, or tie if any, or all if neither of both
-        possible_moves = self.__select_correct_moves(scores, current_player)
+        winning_moves = self.__select_correct_moves(scores, current_player)
+
+        # Calculate whether this player could win
+        # Every filtered move has the same outcome: win, tie, or loss
+        winner = next(iter(winning_moves.values())).winner
+
+        # Only consider those moves if forced to win
+        possible_moves = winning_moves if self._force_win else scores
 
         # If the opponent is playing, in war times it could use moves that are worse for me
         possible_war_moves = possible_moves
         if current_player != self._my_seat:
             possible_war_moves = scores
-
-        # Calculate whether this player could win
-        # Every filtered move has the same outcome: win, tie, or loss
-        winner = next(iter(possible_moves.values())).winner
 
         # Calculate the best move peaceful and warmonger opponent
         best_move_peace = self.__select_best_move(
