@@ -10,7 +10,7 @@ from typing import Any
 from dataclasses import dataclass
 
 from blackholearena.game import Move, State
-from blackholearena.game import legal_moves, apply_move, free_nodes, is_terminal, to_move
+from blackholearena.game import legal_moves, apply_move, free_nodes, is_terminal, moves_played, to_move
 from blackholearena.player import Player
 
 #: Most positions one search may visit; it decides the search depth.
@@ -23,6 +23,10 @@ class DrJekyllBot(Player):
 
     def __init__(self, seed: int | None = None) -> None:
         self._rng = random.Random(seed)
+        self._new_game()
+
+    def _new_game(self) -> None:
+        """Forget everything learned in a previous game."""
 
         # Store already checked states (only final ones)
         self._memo: dict[tuple[Any, ...], DrJekyllBot.StateScore] = {}
@@ -32,6 +36,9 @@ class DrJekyllBot(Player):
 
         # Store my seat in game
         self._my_seat: int | None = None
+
+        # Store the board right after my last move, to judge the opponent's reply
+        self._last_state: State | None = None
 
     @classmethod
     def create(cls, seed: int) -> DrJekyllBot:
@@ -59,8 +66,10 @@ class DrJekyllBot(Player):
     # CHOOSE MOVE
     def choose_move(self, state: State) -> Move:
 
-        # First move, set seat
-        if self._my_seat is None:
+        # My first turn starts a new game: reset and set seat
+        # (the web app and the tests reuse one instance for several games)
+        if moves_played(state) < 2:
+            self._new_game()
             self._my_seat = to_move(state)
 
         # Calculate max depth
@@ -80,6 +89,9 @@ class DrJekyllBot(Player):
             current_player=current_player,
             peace=not self._retaliation_mood)
 
+        # Remember the board the opponent will reply to
+        self._last_state = apply_move(state, move)
+
         return move
 
 
@@ -90,8 +102,30 @@ class DrJekyllBot(Player):
         if self._retaliation_mood:
             return True
 
-        # TODO
-        return False
+        # Nothing to judge before my first move, or if no one replied
+        # (the tests make one instance move for both sides)
+        before = self._last_state
+        if before is None or before["owner"] == state["owner"]:
+            return False
+
+        # The opponent's reply is the node taken since my last move
+        played = next(v for v in free_nodes(before) if state["owner"][v] is not None)
+
+        # Score every reply the opponent had to my last move
+        depth = self._calculate_depth_by_max_nodes(before)
+        replies = {move: self._search(apply_move(before, move), depth) for move in legal_moves(before)}
+
+        # A peaceful opponent picks its own best move; if several, assume the worst one for me
+        opponent = to_move(before)
+        me = self._other_player(opponent)
+        peaceful_moves = self.__select_best_move(
+            moves=self.__select_correct_moves(replies, opponent),
+            current_player=opponent,
+            peace=True)
+        expected = min(replies[m].peace_score[me] for m in peaceful_moves)
+
+        # Retaliate if the opponent chose to lower my points
+        return replies[played].peace_score[me] < expected
 
 
     def _select_best_move(self, moves: dict[Move, DrJekyllBot.StateScore], current_player: int, peace: bool) -> Move:
