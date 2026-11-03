@@ -19,4 +19,6 @@
 #   - file: my_bot.py
 #     class: MyBot
 
-players: []
+players:
+  - file: jparisu_bot.py
+    class: DrJekyllBot
