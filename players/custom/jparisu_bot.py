@@ -6,11 +6,19 @@ Look-ahead search that plays peacefully while the opponent do not reduce its poi
 from __future__ import annotations
 
 import random
-from typing import Any
 from dataclasses import dataclass
+from typing import Any
 
-from blackholearena.game import Move, State
-from blackholearena.game import legal_moves, apply_move, free_nodes, is_terminal, moves_played, to_move
+from blackholearena.game import (
+    Move,
+    State,
+    apply_move,
+    free_nodes,
+    is_terminal,
+    legal_moves,
+    moves_played,
+    to_move,
+)
 from blackholearena.player import Player
 
 #: Most positions one search may visit; it decides the search depth.
@@ -281,7 +289,7 @@ class DrJekyllBot(Player):
     @staticmethod
     def _state_index(state: State) -> tuple[int|None, ...]:
         """Calculate state index for memoization."""
-        return tuple(state["owner"] + state["tiles"])
+        return tuple(state["owner"]) + tuple(state["tiles"])
 
     @staticmethod
     def _other_player(current_player: int) -> int:
