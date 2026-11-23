@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T08:53:25Z",
+  "generated_at": "2026-11-23T17:31:02Z",
   "config": {
     "tournament": "league",
     "graphs": [
@@ -222,9 +222,9 @@
       "forfeits": 0,
       "games": 180,
       "win_rate": 0.622,
-      "avg_move_ms": 15.553,
-      "std_move_ms": 27.494,
-      "max_move_ms": 114.355,
+      "avg_move_ms": 23.745,
+      "std_move_ms": 41.783,
+      "max_move_ms": 168.9,
       "elo": 1777.282
     },
     {
@@ -239,9 +239,9 @@
       "forfeits": 0,
       "games": 180,
       "win_rate": 0.644,
-      "avg_move_ms": 3.924,
-      "std_move_ms": 7.942,
-      "max_move_ms": 35.754,
+      "avg_move_ms": 5.835,
+      "std_move_ms": 11.868,
+      "max_move_ms": 51.999,
       "elo": 1754.482
     },
     {
@@ -256,9 +256,9 @@
       "forfeits": 0,
       "games": 180,
       "win_rate": 0.656,
-      "avg_move_ms": 4.056,
-      "std_move_ms": 8.071,
-      "max_move_ms": 34.934,
+      "avg_move_ms": 5.967,
+      "std_move_ms": 11.931,
+      "max_move_ms": 53.83,
       "elo": 1709.111
     },
     {
@@ -273,9 +273,9 @@
       "forfeits": 0,
       "games": 180,
       "win_rate": 0.533,
-      "avg_move_ms": 3.509,
-      "std_move_ms": 6.87,
-      "max_move_ms": 28.428,
+      "avg_move_ms": 5.097,
+      "std_move_ms": 10.053,
+      "max_move_ms": 40.818,
       "elo": 1570.682
     },
     {
@@ -290,9 +290,9 @@
       "forfeits": 0,
       "games": 180,
       "win_rate": 0.456,
-      "avg_move_ms": 3.411,
-      "std_move_ms": 6.633,
-      "max_move_ms": 28.213,
+      "avg_move_ms": 5.143,
+      "std_move_ms": 10.061,
+      "max_move_ms": 40.978,
       "elo": 1547.62
     },
     {
@@ -307,9 +307,9 @@
       "forfeits": 0,
       "games": 180,
       "win_rate": 0.25,
-      "avg_move_ms": 0.022,
-      "std_move_ms": 0.013,
-      "max_move_ms": 0.154,
+      "avg_move_ms": 0.034,
+      "std_move_ms": 0.019,
+      "max_move_ms": 0.222,
       "elo": 1443.424
     },
     {
@@ -324,9 +324,9 @@
       "forfeits": 0,
       "games": 180,
       "win_rate": 0.256,
-      "avg_move_ms": 0.03,
-      "std_move_ms": 0.02,
-      "max_move_ms": 0.2,
+      "avg_move_ms": 0.045,
+      "std_move_ms": 0.027,
+      "max_move_ms": 0.285,
       "elo": 1404.953
     },
     {
@@ -341,9 +341,9 @@
       "forfeits": 0,
       "games": 180,
       "win_rate": 0.089,
-      "avg_move_ms": 14.122,
-      "std_move_ms": 32.412,
-      "max_move_ms": 125.036,
+      "avg_move_ms": 20.916,
+      "std_move_ms": 48.012,
+      "max_move_ms": 179.482,
       "elo": 1343.168
     },
     {
@@ -358,9 +358,9 @@
       "forfeits": 0,
       "games": 180,
       "win_rate": 0.194,
-      "avg_move_ms": 0.024,
-      "std_move_ms": 0.039,
-      "max_move_ms": 0.853,
+      "avg_move_ms": 0.037,
+      "std_move_ms": 0.05,
+      "max_move_ms": 1.081,
       "elo": 1342.41
     },
     {
@@ -375,9 +375,9 @@
       "forfeits": 0,
       "games": 180,
       "win_rate": 0.239,
-      "avg_move_ms": 0.033,
-      "std_move_ms": 0.052,
-      "max_move_ms": 1.178,
+      "avg_move_ms": 0.046,
+      "std_move_ms": 0.05,
+      "max_move_ms": 1.112,
       "elo": 1328.676
     },
     {
@@ -392,9 +392,9 @@
       "forfeits": 0,
       "games": 180,
       "win_rate": 0.028,
-      "avg_move_ms": 14.028,
-      "std_move_ms": 32.082,
-      "max_move_ms": 123.906,
+      "avg_move_ms": 20.883,
+      "std_move_ms": 47.907,
+      "max_move_ms": 178.842,
       "elo": 1278.193
     }
   ],
@@ -411,12 +411,12 @@
       "draws": 4,
       "winner": "random_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.022,
-      "b_avg_move_ms": 0.017,
-      "a_std_move_ms": 0.031,
-      "b_std_move_ms": 0.007,
-      "a_max_move_ms": 0.238,
-      "b_max_move_ms": 0.036
+      "a_avg_move_ms": 0.034,
+      "b_avg_move_ms": 0.028,
+      "a_std_move_ms": 0.042,
+      "b_std_move_ms": 0.011,
+      "a_max_move_ms": 0.322,
+      "b_max_move_ms": 0.052
     },
     {
       "player_a": "random_0",
@@ -430,12 +430,12 @@
       "draws": 6,
       "winner": "easy_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.018,
-      "b_avg_move_ms": 0.028,
-      "a_std_move_ms": 0.008,
-      "b_std_move_ms": 0.018,
-      "a_max_move_ms": 0.043,
-      "b_max_move_ms": 0.127
+      "a_avg_move_ms": 0.028,
+      "b_avg_move_ms": 0.044,
+      "a_std_move_ms": 0.012,
+      "b_std_move_ms": 0.024,
+      "a_max_move_ms": 0.068,
+      "b_max_move_ms": 0.166
     },
     {
       "player_a": "random_0",
@@ -449,12 +449,12 @@
       "draws": 5,
       "winner": "easy_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.019,
-      "b_avg_move_ms": 0.025,
-      "a_std_move_ms": 0.016,
-      "b_std_move_ms": 0.012,
-      "a_max_move_ms": 0.128,
-      "b_max_move_ms": 0.056
+      "a_avg_move_ms": 0.033,
+      "b_avg_move_ms": 0.039,
+      "a_std_move_ms": 0.025,
+      "b_std_move_ms": 0.017,
+      "a_max_move_ms": 0.179,
+      "b_max_move_ms": 0.086
     },
     {
       "player_a": "random_0",
@@ -468,12 +468,12 @@
       "draws": 4,
       "winner": "aggressive-max_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.023,
-      "b_avg_move_ms": 3.463,
-      "a_std_move_ms": 0.016,
-      "b_std_move_ms": 6.88,
-      "a_max_move_ms": 0.122,
-      "b_max_move_ms": 26.596
+      "a_avg_move_ms": 0.037,
+      "b_avg_move_ms": 5.098,
+      "a_std_move_ms": 0.023,
+      "b_std_move_ms": 10.128,
+      "a_max_move_ms": 0.169,
+      "b_max_move_ms": 37.891
     },
     {
       "player_a": "random_0",
@@ -487,12 +487,12 @@
       "draws": 7,
       "winner": "aggressive-max_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.021,
-      "b_avg_move_ms": 3.406,
-      "a_std_move_ms": 0.007,
-      "b_std_move_ms": 6.643,
-      "a_max_move_ms": 0.036,
-      "b_max_move_ms": 25.491
+      "a_avg_move_ms": 0.037,
+      "b_avg_move_ms": 5.214,
+      "a_std_move_ms": 0.02,
+      "b_std_move_ms": 10.262,
+      "a_max_move_ms": 0.158,
+      "b_max_move_ms": 38.467
     },
     {
       "player_a": "random_0",
@@ -506,12 +506,12 @@
       "draws": 3,
       "winner": "aggressive-min_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.021,
-      "b_avg_move_ms": 4.03,
-      "a_std_move_ms": 0.007,
-      "b_std_move_ms": 8.241,
-      "a_max_move_ms": 0.039,
-      "b_max_move_ms": 34.607
+      "a_avg_move_ms": 0.036,
+      "b_avg_move_ms": 6.173,
+      "a_std_move_ms": 0.011,
+      "b_std_move_ms": 12.59,
+      "a_max_move_ms": 0.057,
+      "b_max_move_ms": 53.83
     },
     {
       "player_a": "random_0",
@@ -525,12 +525,12 @@
       "draws": 3,
       "winner": "aggressive-min_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.022,
-      "b_avg_move_ms": 4.041,
-      "a_std_move_ms": 0.008,
-      "b_std_move_ms": 7.986,
-      "a_max_move_ms": 0.039,
-      "b_max_move_ms": 33.533
+      "a_avg_move_ms": 0.035,
+      "b_avg_move_ms": 6.071,
+      "a_std_move_ms": 0.01,
+      "b_std_move_ms": 12.167,
+      "a_max_move_ms": 0.057,
+      "b_max_move_ms": 51.501
     },
     {
       "player_a": "random_0",
@@ -544,12 +544,12 @@
       "draws": 7,
       "winner": "random_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.04,
-      "b_avg_move_ms": 14.331,
-      "a_std_move_ms": 0.112,
-      "b_std_move_ms": 33.434,
-      "a_max_move_ms": 0.853,
-      "b_max_move_ms": 125.036
+      "a_avg_move_ms": 0.054,
+      "b_avg_move_ms": 20.527,
+      "a_std_move_ms": 0.142,
+      "b_std_move_ms": 47.893,
+      "a_max_move_ms": 1.081,
+      "b_max_move_ms": 177.471
     },
     {
       "player_a": "random_0",
@@ -563,12 +563,12 @@
       "draws": 9,
       "winner": "random_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.026,
-      "b_avg_move_ms": 13.798,
-      "a_std_move_ms": 0.019,
-      "b_std_move_ms": 32.242,
-      "a_max_move_ms": 0.134,
-      "b_max_move_ms": 121.38
+      "a_avg_move_ms": 0.037,
+      "b_avg_move_ms": 20.448,
+      "a_std_move_ms": 0.023,
+      "b_std_move_ms": 47.9,
+      "a_max_move_ms": 0.183,
+      "b_max_move_ms": 178.006
     },
     {
       "player_a": "random_0",
@@ -582,12 +582,12 @@
       "draws": 3,
       "winner": "DrJekyll_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.023,
-      "b_avg_move_ms": 14.937,
-      "a_std_move_ms": 0.01,
-      "b_std_move_ms": 26.329,
-      "a_max_move_ms": 0.05,
-      "b_max_move_ms": 97.564
+      "a_avg_move_ms": 0.035,
+      "b_avg_move_ms": 23.058,
+      "a_std_move_ms": 0.017,
+      "b_std_move_ms": 40.44,
+      "a_max_move_ms": 0.132,
+      "b_max_move_ms": 153.434
     },
     {
       "player_a": "random_1",
@@ -601,12 +601,12 @@
       "draws": 7,
       "winner": "easy_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.021,
-      "b_avg_move_ms": 0.027,
-      "a_std_move_ms": 0.018,
-      "b_std_move_ms": 0.014,
-      "a_max_move_ms": 0.134,
-      "b_max_move_ms": 0.057
+      "a_avg_move_ms": 0.031,
+      "b_avg_move_ms": 0.038,
+      "a_std_move_ms": 0.024,
+      "b_std_move_ms": 0.016,
+      "a_max_move_ms": 0.19,
+      "b_max_move_ms": 0.079
     },
     {
       "player_a": "random_1",
@@ -620,12 +620,12 @@
       "draws": 1,
       "winner": "random_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.019,
-      "b_avg_move_ms": 0.028,
-      "a_std_move_ms": 0.009,
-      "b_std_move_ms": 0.018,
-      "a_max_move_ms": 0.05,
-      "b_max_move_ms": 0.115
+      "a_avg_move_ms": 0.029,
+      "b_avg_move_ms": 0.042,
+      "a_std_move_ms": 0.012,
+      "b_std_move_ms": 0.027,
+      "a_max_move_ms": 0.069,
+      "b_max_move_ms": 0.174
     },
     {
       "player_a": "random_1",
@@ -639,12 +639,12 @@
       "draws": 4,
       "winner": "aggressive-max_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.024,
-      "b_avg_move_ms": 3.606,
-      "a_std_move_ms": 0.019,
-      "b_std_move_ms": 7.132,
-      "a_max_move_ms": 0.154,
-      "b_max_move_ms": 28.428
+      "a_avg_move_ms": 0.036,
+      "b_avg_move_ms": 5.242,
+      "a_std_move_ms": 0.026,
+      "b_std_move_ms": 10.374,
+      "a_max_move_ms": 0.209,
+      "b_max_move_ms": 40.569
     },
     {
       "player_a": "random_1",
@@ -658,12 +658,12 @@
       "draws": 6,
       "winner": "aggressive-max_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.023,
-      "b_avg_move_ms": 3.396,
-      "a_std_move_ms": 0.015,
-      "b_std_move_ms": 6.697,
-      "a_max_move_ms": 0.124,
-      "b_max_move_ms": 26.893
+      "a_avg_move_ms": 0.037,
+      "b_avg_move_ms": 5.221,
+      "a_std_move_ms": 0.027,
+      "b_std_move_ms": 10.345,
+      "a_max_move_ms": 0.222,
+      "b_max_move_ms": 40.717
     },
     {
       "player_a": "random_1",
@@ -677,12 +677,12 @@
       "draws": 2,
       "winner": "aggressive-min_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.021,
-      "b_avg_move_ms": 4.041,
-      "a_std_move_ms": 0.008,
-      "b_std_move_ms": 8.196,
-      "a_max_move_ms": 0.051,
-      "b_max_move_ms": 33.445
+      "a_avg_move_ms": 0.034,
+      "b_avg_move_ms": 6.139,
+      "a_std_move_ms": 0.011,
+      "b_std_move_ms": 12.506,
+      "a_max_move_ms": 0.058,
+      "b_max_move_ms": 51.481
     },
     {
       "player_a": "random_1",
@@ -696,12 +696,12 @@
       "draws": 1,
       "winner": "aggressive-min_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.021,
-      "b_avg_move_ms": 3.909,
-      "a_std_move_ms": 0.007,
-      "b_std_move_ms": 8.139,
-      "a_max_move_ms": 0.044,
-      "b_max_move_ms": 33.295
+      "a_avg_move_ms": 0.034,
+      "b_avg_move_ms": 6.0,
+      "a_std_move_ms": 0.013,
+      "b_std_move_ms": 12.652,
+      "a_max_move_ms": 0.09,
+      "b_max_move_ms": 51.999
     },
     {
       "player_a": "random_1",
@@ -715,12 +715,12 @@
       "draws": 6,
       "winner": "random_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.022,
-      "b_avg_move_ms": 13.475,
-      "a_std_move_ms": 0.008,
-      "b_std_move_ms": 31.486,
-      "a_max_move_ms": 0.048,
-      "b_max_move_ms": 117.619
+      "a_avg_move_ms": 0.034,
+      "b_avg_move_ms": 20.344,
+      "a_std_move_ms": 0.011,
+      "b_std_move_ms": 47.659,
+      "a_max_move_ms": 0.057,
+      "b_max_move_ms": 176.872
     },
     {
       "player_a": "random_1",
@@ -734,12 +734,12 @@
       "draws": 4,
       "winner": "random_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.026,
-      "b_avg_move_ms": 13.938,
-      "a_std_move_ms": 0.02,
-      "b_std_move_ms": 32.608,
-      "a_max_move_ms": 0.152,
-      "b_max_move_ms": 123.906
+      "a_avg_move_ms": 0.038,
+      "b_avg_move_ms": 20.343,
+      "a_std_move_ms": 0.027,
+      "b_std_move_ms": 47.583,
+      "a_max_move_ms": 0.217,
+      "b_max_move_ms": 177.356
     },
     {
       "player_a": "random_1",
@@ -753,12 +753,12 @@
       "draws": 5,
       "winner": "DrJekyll_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.023,
-      "b_avg_move_ms": 15.298,
-      "a_std_move_ms": 0.01,
-      "b_std_move_ms": 26.878,
-      "a_max_move_ms": 0.045,
-      "b_max_move_ms": 99.443
+      "a_avg_move_ms": 0.035,
+      "b_avg_move_ms": 22.782,
+      "a_std_move_ms": 0.012,
+      "b_std_move_ms": 39.94,
+      "a_max_move_ms": 0.065,
+      "b_max_move_ms": 146.565
     },
     {
       "player_a": "easy_0",
@@ -772,12 +772,12 @@
       "draws": 6,
       "winner": "easy_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.024,
-      "b_avg_move_ms": 0.026,
-      "a_std_move_ms": 0.015,
-      "b_std_move_ms": 0.023,
-      "a_max_move_ms": 0.062,
-      "b_max_move_ms": 0.168
+      "a_avg_move_ms": 0.036,
+      "b_avg_move_ms": 0.039,
+      "a_std_move_ms": 0.018,
+      "b_std_move_ms": 0.033,
+      "a_max_move_ms": 0.096,
+      "b_max_move_ms": 0.238
     },
     {
       "player_a": "easy_0",
@@ -791,12 +791,12 @@
       "draws": 5,
       "winner": "aggressive-max_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.031,
-      "b_avg_move_ms": 3.538,
-      "a_std_move_ms": 0.013,
-      "b_std_move_ms": 6.894,
-      "a_max_move_ms": 0.065,
-      "b_max_move_ms": 26.17
+      "a_avg_move_ms": 0.044,
+      "b_avg_move_ms": 5.14,
+      "a_std_move_ms": 0.017,
+      "b_std_move_ms": 10.091,
+      "a_max_move_ms": 0.103,
+      "b_max_move_ms": 38.008
     },
     {
       "player_a": "easy_0",
@@ -810,12 +810,12 @@
       "draws": 7,
       "winner": "aggressive-max_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.031,
-      "b_avg_move_ms": 3.628,
+      "a_avg_move_ms": 0.045,
+      "b_avg_move_ms": 5.221,
       "a_std_move_ms": 0.015,
-      "b_std_move_ms": 6.824,
-      "a_max_move_ms": 0.073,
-      "b_max_move_ms": 25.932
+      "b_std_move_ms": 10.04,
+      "a_max_move_ms": 0.079,
+      "b_max_move_ms": 38.025
     },
     {
       "player_a": "easy_0",
@@ -829,12 +829,12 @@
       "draws": 4,
       "winner": "aggressive-min_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.054,
-      "b_avg_move_ms": 4.349,
-      "a_std_move_ms": 0.155,
-      "b_std_move_ms": 8.695,
-      "a_max_move_ms": 1.178,
-      "b_max_move_ms": 34.934
+      "a_avg_move_ms": 0.064,
+      "b_avg_move_ms": 5.962,
+      "a_std_move_ms": 0.145,
+      "b_std_move_ms": 12.093,
+      "a_max_move_ms": 1.112,
+      "b_max_move_ms": 51.089
     },
     {
       "player_a": "easy_0",
@@ -848,12 +848,12 @@
       "draws": 4,
       "winner": "aggressive-min_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.034,
-      "b_avg_move_ms": 4.073,
-      "a_std_move_ms": 0.026,
-      "b_std_move_ms": 8.405,
-      "a_max_move_ms": 0.186,
-      "b_max_move_ms": 35.754
+      "a_avg_move_ms": 0.047,
+      "b_avg_move_ms": 5.832,
+      "a_std_move_ms": 0.031,
+      "b_std_move_ms": 12.073,
+      "a_max_move_ms": 0.241,
+      "b_max_move_ms": 51.276
     },
     {
       "player_a": "easy_0",
@@ -867,12 +867,12 @@
       "draws": 6,
       "winner": "easy_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.032,
-      "b_avg_move_ms": 14.053,
-      "a_std_move_ms": 0.015,
-      "b_std_move_ms": 32.843,
-      "a_max_move_ms": 0.067,
-      "b_max_move_ms": 122.463
+      "a_avg_move_ms": 0.047,
+      "b_avg_move_ms": 20.944,
+      "a_std_move_ms": 0.019,
+      "b_std_move_ms": 48.931,
+      "a_max_move_ms": 0.097,
+      "b_max_move_ms": 179.482
     },
     {
       "player_a": "easy_0",
@@ -886,12 +886,12 @@
       "draws": 8,
       "winner": "easy_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.034,
-      "b_avg_move_ms": 13.68,
-      "a_std_move_ms": 0.017,
-      "b_std_move_ms": 31.779,
-      "a_max_move_ms": 0.075,
-      "b_max_move_ms": 118.86
+      "a_avg_move_ms": 0.045,
+      "b_avg_move_ms": 20.461,
+      "a_std_move_ms": 0.018,
+      "b_std_move_ms": 47.823,
+      "a_max_move_ms": 0.087,
+      "b_max_move_ms": 178.842
     },
     {
       "player_a": "easy_0",
@@ -905,12 +905,12 @@
       "draws": 4,
       "winner": "DrJekyll_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.032,
-      "b_avg_move_ms": 15.006,
-      "a_std_move_ms": 0.015,
-      "b_std_move_ms": 26.304,
-      "a_max_move_ms": 0.06,
-      "b_max_move_ms": 97.989
+      "a_avg_move_ms": 0.049,
+      "b_avg_move_ms": 22.704,
+      "a_std_move_ms": 0.021,
+      "b_std_move_ms": 39.777,
+      "a_max_move_ms": 0.114,
+      "b_max_move_ms": 146.582
     },
     {
       "player_a": "easy_1",
@@ -924,12 +924,12 @@
       "draws": 4,
       "winner": "aggressive-max_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.031,
-      "b_avg_move_ms": 3.516,
-      "a_std_move_ms": 0.022,
-      "b_std_move_ms": 6.913,
-      "a_max_move_ms": 0.164,
-      "b_max_move_ms": 27.288
+      "a_avg_move_ms": 0.047,
+      "b_avg_move_ms": 5.255,
+      "a_std_move_ms": 0.028,
+      "b_std_move_ms": 10.408,
+      "a_max_move_ms": 0.223,
+      "b_max_move_ms": 40.43
     },
     {
       "player_a": "easy_1",
@@ -943,12 +943,12 @@
       "draws": 6,
       "winner": "aggressive-max_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.031,
-      "b_avg_move_ms": 3.573,
-      "a_std_move_ms": 0.021,
-      "b_std_move_ms": 7.046,
-      "a_max_move_ms": 0.156,
-      "b_max_move_ms": 28.213
+      "a_avg_move_ms": 0.046,
+      "b_avg_move_ms": 5.243,
+      "a_std_move_ms": 0.03,
+      "b_std_move_ms": 10.335,
+      "a_max_move_ms": 0.237,
+      "b_max_move_ms": 40.978
     },
     {
       "player_a": "easy_1",
@@ -962,12 +962,12 @@
       "draws": 2,
       "winner": "aggressive-min_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.029,
-      "b_avg_move_ms": 4.142,
-      "a_std_move_ms": 0.012,
-      "b_std_move_ms": 8.409,
-      "a_max_move_ms": 0.058,
-      "b_max_move_ms": 34.313
+      "a_avg_move_ms": 0.044,
+      "b_avg_move_ms": 6.08,
+      "a_std_move_ms": 0.016,
+      "b_std_move_ms": 12.411,
+      "a_max_move_ms": 0.076,
+      "b_max_move_ms": 50.568
     },
     {
       "player_a": "easy_1",
@@ -981,12 +981,12 @@
       "draws": 1,
       "winner": "aggressive-min_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.03,
-      "b_avg_move_ms": 4.017,
-      "a_std_move_ms": 0.014,
-      "b_std_move_ms": 8.386,
-      "a_max_move_ms": 0.076,
-      "b_max_move_ms": 35.07
+      "a_avg_move_ms": 0.044,
+      "b_avg_move_ms": 5.939,
+      "a_std_move_ms": 0.016,
+      "b_std_move_ms": 12.462,
+      "a_max_move_ms": 0.083,
+      "b_max_move_ms": 51.336
     },
     {
       "player_a": "easy_1",
@@ -1000,12 +1000,12 @@
       "draws": 5,
       "winner": "easy_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.037,
-      "b_avg_move_ms": 13.817,
-      "a_std_move_ms": 0.031,
-      "b_std_move_ms": 32.236,
-      "a_max_move_ms": 0.2,
-      "b_max_move_ms": 121.417
+      "a_avg_move_ms": 0.052,
+      "b_avg_move_ms": 20.314,
+      "a_std_move_ms": 0.043,
+      "b_std_move_ms": 47.587,
+      "a_max_move_ms": 0.285,
+      "b_max_move_ms": 177.809
     },
     {
       "player_a": "easy_1",
@@ -1019,12 +1019,12 @@
       "draws": 4,
       "winner": "easy_1",
       "forfeits": 0,
-      "a_avg_move_ms": 0.032,
-      "b_avg_move_ms": 13.784,
-      "a_std_move_ms": 0.016,
-      "b_std_move_ms": 32.129,
-      "a_max_move_ms": 0.071,
-      "b_max_move_ms": 119.291
+      "a_avg_move_ms": 0.047,
+      "b_avg_move_ms": 20.416,
+      "a_std_move_ms": 0.02,
+      "b_std_move_ms": 47.788,
+      "a_max_move_ms": 0.111,
+      "b_max_move_ms": 178.574
     },
     {
       "player_a": "easy_1",
@@ -1038,12 +1038,12 @@
       "draws": 5,
       "winner": "DrJekyll_0",
       "forfeits": 0,
-      "a_avg_move_ms": 0.032,
-      "b_avg_move_ms": 15.023,
-      "a_std_move_ms": 0.015,
-      "b_std_move_ms": 26.374,
-      "a_max_move_ms": 0.062,
-      "b_max_move_ms": 97.012
+      "a_avg_move_ms": 0.049,
+      "b_avg_move_ms": 22.707,
+      "a_std_move_ms": 0.02,
+      "b_std_move_ms": 39.795,
+      "a_max_move_ms": 0.091,
+      "b_max_move_ms": 146.702
     },
     {
       "player_a": "aggressive-max_0",
@@ -1057,12 +1057,12 @@
       "draws": 7,
       "winner": "aggressive-max_0",
       "forfeits": 0,
-      "a_avg_move_ms": 3.426,
-      "b_avg_move_ms": 3.449,
-      "a_std_move_ms": 6.657,
-      "b_std_move_ms": 6.59,
-      "a_max_move_ms": 23.547,
-      "b_max_move_ms": 23.225
+      "a_avg_move_ms": 4.932,
+      "b_avg_move_ms": 4.977,
+      "a_std_move_ms": 9.57,
+      "b_std_move_ms": 9.561,
+      "a_max_move_ms": 33.454,
+      "b_max_move_ms": 33.391
     },
     {
       "player_a": "aggressive-max_0",
@@ -1076,12 +1076,12 @@
       "draws": 5,
       "winner": "aggressive-min_0",
       "forfeits": 0,
-      "a_avg_move_ms": 3.664,
-      "b_avg_move_ms": 4.004,
-      "a_std_move_ms": 6.694,
-      "b_std_move_ms": 7.529,
-      "a_max_move_ms": 23.255,
-      "b_max_move_ms": 26.157
+      "a_avg_move_ms": 4.962,
+      "b_avg_move_ms": 5.596,
+      "a_std_move_ms": 9.537,
+      "b_std_move_ms": 10.93,
+      "a_max_move_ms": 33.318,
+      "b_max_move_ms": 37.939
     },
     {
       "player_a": "aggressive-max_0",
@@ -1095,12 +1095,12 @@
       "draws": 5,
       "winner": "aggressive-max_0",
       "forfeits": 0,
-      "a_avg_move_ms": 3.459,
-      "b_avg_move_ms": 3.853,
-      "a_std_move_ms": 6.639,
-      "b_std_move_ms": 7.503,
-      "a_max_move_ms": 24.298,
-      "b_max_move_ms": 25.976
+      "a_avg_move_ms": 4.974,
+      "b_avg_move_ms": 5.613,
+      "a_std_move_ms": 9.576,
+      "b_std_move_ms": 10.972,
+      "a_max_move_ms": 33.384,
+      "b_max_move_ms": 38.224
     },
     {
       "player_a": "aggressive-max_0",
@@ -1114,12 +1114,12 @@
       "draws": 9,
       "winner": "aggressive-max_0",
       "forfeits": 0,
-      "a_avg_move_ms": 3.51,
-      "b_avg_move_ms": 13.952,
-      "a_std_move_ms": 6.984,
-      "b_std_move_ms": 32.441,
-      "a_max_move_ms": 26.785,
-      "b_max_move_ms": 123.189
+      "a_avg_move_ms": 5.192,
+      "b_avg_move_ms": 20.513,
+      "a_std_move_ms": 10.354,
+      "b_std_move_ms": 47.618,
+      "a_max_move_ms": 40.331,
+      "b_max_move_ms": 177.473
     },
     {
       "player_a": "aggressive-max_0",
@@ -1133,12 +1133,12 @@
       "draws": 6,
       "winner": "aggressive-max_0",
       "forfeits": 0,
-      "a_avg_move_ms": 3.478,
-      "b_avg_move_ms": 13.88,
-      "a_std_move_ms": 7.028,
-      "b_std_move_ms": 31.966,
-      "a_max_move_ms": 28.009,
-      "b_max_move_ms": 118.065
+      "a_avg_move_ms": 5.061,
+      "b_avg_move_ms": 20.415,
+      "a_std_move_ms": 10.111,
+      "b_std_move_ms": 47.378,
+      "a_max_move_ms": 36.831,
+      "b_max_move_ms": 175.897
     },
     {
       "player_a": "aggressive-max_0",
@@ -1152,12 +1152,12 @@
       "draws": 7,
       "winner": "DrJekyll_0",
       "forfeits": 0,
-      "a_avg_move_ms": 3.431,
-      "b_avg_move_ms": 14.951,
-      "a_std_move_ms": 6.854,
-      "b_std_move_ms": 26.376,
-      "a_max_move_ms": 26.955,
-      "b_max_move_ms": 98.716
+      "a_avg_move_ms": 5.111,
+      "b_avg_move_ms": 22.638,
+      "a_std_move_ms": 10.316,
+      "b_std_move_ms": 39.798,
+      "a_max_move_ms": 40.818,
+      "b_max_move_ms": 146.698
     },
     {
       "player_a": "aggressive-max_1",
@@ -1171,12 +1171,12 @@
       "draws": 0,
       "winner": "aggressive-min_0",
       "forfeits": 0,
-      "a_avg_move_ms": 3.26,
-      "b_avg_move_ms": 3.647,
-      "a_std_move_ms": 6.29,
-      "b_std_move_ms": 7.128,
-      "a_max_move_ms": 22.204,
-      "b_max_move_ms": 25.359
+      "a_avg_move_ms": 4.921,
+      "b_avg_move_ms": 5.544,
+      "a_std_move_ms": 9.548,
+      "b_std_move_ms": 10.871,
+      "a_max_move_ms": 33.334,
+      "b_max_move_ms": 37.843
     },
     {
       "player_a": "aggressive-max_1",
@@ -1190,12 +1190,12 @@
       "draws": 3,
       "winner": "aggressive-min_1",
       "forfeits": 0,
-      "a_avg_move_ms": 3.244,
-      "b_avg_move_ms": 3.631,
-      "a_std_move_ms": 6.2,
-      "b_std_move_ms": 7.028,
-      "a_max_move_ms": 22.24,
-      "b_max_move_ms": 24.811
+      "a_avg_move_ms": 5.002,
+      "b_avg_move_ms": 5.563,
+      "a_std_move_ms": 9.686,
+      "b_std_move_ms": 10.934,
+      "a_max_move_ms": 34.513,
+      "b_max_move_ms": 38.04
     },
     {
       "player_a": "aggressive-max_1",
@@ -1209,12 +1209,12 @@
       "draws": 6,
       "winner": "aggressive-max_1",
       "forfeits": 0,
-      "a_avg_move_ms": 3.43,
-      "b_avg_move_ms": 13.414,
-      "a_std_move_ms": 6.813,
-      "b_std_move_ms": 30.852,
-      "a_max_move_ms": 26.82,
-      "b_max_move_ms": 116.155
+      "a_avg_move_ms": 5.233,
+      "b_avg_move_ms": 20.625,
+      "a_std_move_ms": 10.313,
+      "b_std_move_ms": 47.727,
+      "a_max_move_ms": 40.051,
+      "b_max_move_ms": 178.478
     },
     {
       "player_a": "aggressive-max_1",
@@ -1228,12 +1228,12 @@
       "draws": 9,
       "winner": "aggressive-max_1",
       "forfeits": 0,
-      "a_avg_move_ms": 3.368,
-      "b_avg_move_ms": 13.087,
-      "a_std_move_ms": 6.51,
-      "b_std_move_ms": 30.166,
-      "a_max_move_ms": 23.531,
-      "b_max_move_ms": 114.229
+      "a_avg_move_ms": 5.214,
+      "b_avg_move_ms": 20.535,
+      "a_std_move_ms": 10.193,
+      "b_std_move_ms": 47.397,
+      "a_max_move_ms": 37.371,
+      "b_max_move_ms": 176.503
     },
     {
       "player_a": "aggressive-max_1",
@@ -1247,12 +1247,12 @@
       "draws": 6,
       "winner": "DrJekyll_0",
       "forfeits": 0,
-      "a_avg_move_ms": 3.354,
-      "b_avg_move_ms": 14.479,
-      "a_std_move_ms": 6.667,
-      "b_std_move_ms": 25.514,
-      "a_max_move_ms": 27.28,
-      "b_max_move_ms": 98.135
+      "a_avg_move_ms": 5.184,
+      "b_avg_move_ms": 22.623,
+      "a_std_move_ms": 10.268,
+      "b_std_move_ms": 39.545,
+      "a_max_move_ms": 40.475,
+      "b_max_move_ms": 146.783
     },
     {
       "player_a": "aggressive-min_0",
@@ -1266,12 +1266,12 @@
       "draws": 10,
       "winner": "aggressive-min_0",
       "forfeits": 0,
-      "a_avg_move_ms": 3.541,
-      "b_avg_move_ms": 3.553,
-      "a_std_move_ms": 7.09,
-      "b_std_move_ms": 7.046,
-      "a_max_move_ms": 25.03,
-      "b_max_move_ms": 24.723
+      "a_avg_move_ms": 5.443,
+      "b_avg_move_ms": 5.463,
+      "a_std_move_ms": 10.864,
+      "b_std_move_ms": 10.826,
+      "a_max_move_ms": 37.849,
+      "b_max_move_ms": 38.015
     },
     {
       "player_a": "aggressive-min_0",
@@ -1285,12 +1285,12 @@
       "draws": 1,
       "winner": "aggressive-min_0",
       "forfeits": 0,
-      "a_avg_move_ms": 4.002,
-      "b_avg_move_ms": 14.642,
-      "a_std_move_ms": 8.319,
-      "b_std_move_ms": 32.769,
-      "a_max_move_ms": 34.52,
-      "b_max_move_ms": 120.665
+      "a_avg_move_ms": 5.904,
+      "b_avg_move_ms": 21.514,
+      "a_std_move_ms": 12.201,
+      "b_std_move_ms": 48.101,
+      "a_max_move_ms": 50.133,
+      "b_max_move_ms": 176.037
     },
     {
       "player_a": "aggressive-min_0",
@@ -1304,12 +1304,12 @@
       "draws": 2,
       "winner": "aggressive-min_0",
       "forfeits": 0,
-      "a_avg_move_ms": 3.984,
-      "b_avg_move_ms": 14.903,
-      "a_std_move_ms": 8.02,
-      "b_std_move_ms": 33.273,
-      "a_max_move_ms": 30.274,
-      "b_max_move_ms": 122.803
+      "a_avg_move_ms": 5.756,
+      "b_avg_move_ms": 21.482,
+      "a_std_move_ms": 11.656,
+      "b_std_move_ms": 48.123,
+      "a_max_move_ms": 43.7,
+      "b_max_move_ms": 175.872
     },
     {
       "player_a": "aggressive-min_0",
@@ -1323,12 +1323,12 @@
       "draws": 8,
       "winner": "DrJekyll_0",
       "forfeits": 0,
-      "a_avg_move_ms": 4.825,
-      "b_avg_move_ms": 16.61,
-      "a_std_move_ms": 8.81,
-      "b_std_move_ms": 29.782,
-      "a_max_move_ms": 33.616,
-      "b_max_move_ms": 113.322
+      "a_avg_move_ms": 7.075,
+      "b_avg_move_ms": 24.792,
+      "a_std_move_ms": 12.886,
+      "b_std_move_ms": 44.29,
+      "a_max_move_ms": 49.992,
+      "b_max_move_ms": 167.099
     },
     {
       "player_a": "aggressive-min_1",
@@ -1342,12 +1342,12 @@
       "draws": 1,
       "winner": "aggressive-min_1",
       "forfeits": 0,
-      "a_avg_move_ms": 4.113,
-      "b_avg_move_ms": 15.032,
-      "a_std_move_ms": 8.354,
-      "b_std_move_ms": 33.821,
-      "a_max_move_ms": 34.87,
-      "b_max_move_ms": 124.882
+      "a_avg_move_ms": 5.986,
+      "b_avg_move_ms": 21.525,
+      "a_std_move_ms": 12.251,
+      "b_std_move_ms": 48.167,
+      "a_max_move_ms": 50.061,
+      "b_max_move_ms": 176.824
     },
     {
       "player_a": "aggressive-min_1",
@@ -1361,12 +1361,12 @@
       "draws": 0,
       "winner": "aggressive-min_1",
       "forfeits": 0,
-      "a_avg_move_ms": 3.883,
-      "b_avg_move_ms": 14.212,
-      "a_std_move_ms": 7.772,
-      "b_std_move_ms": 31.568,
-      "a_max_move_ms": 29.804,
-      "b_max_move_ms": 116.77
+      "a_avg_move_ms": 5.833,
+      "b_avg_move_ms": 21.584,
+      "a_std_move_ms": 11.711,
+      "b_std_move_ms": 48.217,
+      "a_max_move_ms": 44.486,
+      "b_max_move_ms": 176.998
     },
     {
       "player_a": "aggressive-min_1",
@@ -1380,12 +1380,12 @@
       "draws": 8,
       "winner": "DrJekyll_0",
       "forfeits": 0,
-      "a_avg_move_ms": 4.168,
-      "b_avg_move_ms": 17.071,
-      "a_std_move_ms": 8.591,
-      "b_std_move_ms": 30.409,
-      "a_max_move_ms": 34.687,
-      "b_max_move_ms": 114.355
+      "a_avg_move_ms": 6.054,
+      "b_avg_move_ms": 25.673,
+      "a_std_move_ms": 12.429,
+      "b_std_move_ms": 45.131,
+      "a_max_move_ms": 50.253,
+      "b_max_move_ms": 164.693
     },
     {
       "player_a": "cooperative_0",
@@ -1399,12 +1399,12 @@
       "draws": 16,
       "winner": "cooperative_0",
       "forfeits": 0,
-      "a_avg_move_ms": 14.539,
-      "b_avg_move_ms": 14.641,
-      "a_std_move_ms": 32.759,
-      "b_std_move_ms": 33.083,
-      "a_max_move_ms": 120.634,
-      "b_max_move_ms": 122.643
+      "a_avg_move_ms": 21.345,
+      "b_avg_move_ms": 21.31,
+      "a_std_move_ms": 48.231,
+      "b_std_move_ms": 48.137,
+      "a_max_move_ms": 176.33,
+      "b_max_move_ms": 176.945
     },
     {
       "player_a": "cooperative_0",
@@ -1418,12 +1418,12 @@
       "draws": 5,
       "winner": "DrJekyll_0",
       "forfeits": 0,
-      "a_avg_move_ms": 13.966,
-      "b_avg_move_ms": 15.855,
-      "a_std_move_ms": 31.322,
-      "b_std_move_ms": 28.427,
-      "a_max_move_ms": 116.418,
-      "b_max_move_ms": 107.877
+      "a_avg_move_ms": 21.506,
+      "b_avg_move_ms": 24.734,
+      "a_std_move_ms": 48.17,
+      "b_std_move_ms": 44.267,
+      "a_max_move_ms": 177.22,
+      "b_max_move_ms": 168.9
     },
     {
       "player_a": "cooperative_1",
@@ -1437,12 +1437,12 @@
       "draws": 4,
       "winner": "DrJekyll_0",
       "forfeits": 0,
-      "a_avg_move_ms": 14.354,
-      "b_avg_move_ms": 16.302,
-      "a_std_move_ms": 31.864,
-      "b_std_move_ms": 27.981,
-      "a_max_move_ms": 114.708,
-      "b_max_move_ms": 105.903
+      "a_avg_move_ms": 21.836,
+      "b_avg_move_ms": 25.742,
+      "a_std_move_ms": 48.675,
+      "b_std_move_ms": 44.045,
+      "a_max_move_ms": 177.158,
+      "b_max_move_ms": 165.792
     }
   ],
   "player_stats": [
@@ -1458,13 +1458,13 @@
       "games": 180,
       "win_rate": 0.622,
       "moves_made": 540,
-      "avg_move_ms": 15.553,
-      "std_move_ms": 27.494,
-      "max_move_ms": 114.355,
-      "total_move_ms": 8398.746,
-      "avg_build_ms": 0.035,
-      "std_build_ms": 0.009,
-      "max_build_ms": 0.06,
+      "avg_move_ms": 23.745,
+      "std_move_ms": 41.783,
+      "max_move_ms": 168.9,
+      "total_move_ms": 12822.437,
+      "avg_build_ms": 0.049,
+      "std_build_ms": 0.013,
+      "max_build_ms": 0.088,
       "opponents": [
         {
           "opponent": "aggressive-max_0",
@@ -1571,13 +1571,13 @@
       "games": 180,
       "win_rate": 0.644,
       "moves_made": 540,
-      "avg_move_ms": 3.924,
-      "std_move_ms": 7.942,
-      "max_move_ms": 35.754,
-      "total_move_ms": 2118.962,
-      "avg_build_ms": 0.037,
-      "std_build_ms": 0.016,
-      "max_build_ms": 0.159,
+      "avg_move_ms": 5.835,
+      "std_move_ms": 11.868,
+      "max_move_ms": 51.999,
+      "total_move_ms": 3151.135,
+      "avg_build_ms": 0.048,
+      "std_build_ms": 0.022,
+      "max_build_ms": 0.207,
       "opponents": [
         {
           "opponent": "DrJekyll_0",
@@ -1684,13 +1684,13 @@
       "games": 180,
       "win_rate": 0.656,
       "moves_made": 540,
-      "avg_move_ms": 4.056,
-      "std_move_ms": 8.071,
-      "max_move_ms": 34.934,
-      "total_move_ms": 2190.469,
-      "avg_build_ms": 0.037,
-      "std_build_ms": 0.019,
-      "max_build_ms": 0.151,
+      "avg_move_ms": 5.967,
+      "std_move_ms": 11.931,
+      "max_move_ms": 53.83,
+      "total_move_ms": 3222.357,
+      "avg_build_ms": 0.048,
+      "std_build_ms": 0.026,
+      "max_build_ms": 0.225,
       "opponents": [
         {
           "opponent": "DrJekyll_0",
@@ -1797,13 +1797,13 @@
       "games": 180,
       "win_rate": 0.533,
       "moves_made": 540,
-      "avg_move_ms": 3.509,
-      "std_move_ms": 6.87,
-      "max_move_ms": 28.428,
-      "total_move_ms": 1894.88,
-      "avg_build_ms": 0.034,
-      "std_build_ms": 0.062,
-      "max_build_ms": 0.847,
+      "avg_move_ms": 5.097,
+      "std_move_ms": 10.053,
+      "max_move_ms": 40.818,
+      "total_move_ms": 2752.121,
+      "avg_build_ms": 0.044,
+      "std_build_ms": 0.079,
+      "max_build_ms": 1.07,
       "opponents": [
         {
           "opponent": "DrJekyll_0",
@@ -1910,13 +1910,13 @@
       "games": 180,
       "win_rate": 0.456,
       "moves_made": 540,
-      "avg_move_ms": 3.411,
-      "std_move_ms": 6.633,
-      "max_move_ms": 28.213,
-      "total_move_ms": 1841.869,
-      "avg_build_ms": 0.031,
-      "std_build_ms": 0.017,
-      "max_build_ms": 0.154,
+      "avg_move_ms": 5.143,
+      "std_move_ms": 10.061,
+      "max_move_ms": 40.978,
+      "total_move_ms": 2777.216,
+      "avg_build_ms": 0.04,
+      "std_build_ms": 0.022,
+      "max_build_ms": 0.188,
       "opponents": [
         {
           "opponent": "DrJekyll_0",
@@ -2023,13 +2023,13 @@
       "games": 180,
       "win_rate": 0.25,
       "moves_made": 540,
-      "avg_move_ms": 0.022,
-      "std_move_ms": 0.013,
-      "max_move_ms": 0.154,
-      "total_move_ms": 11.759,
-      "avg_build_ms": 0.022,
-      "std_build_ms": 0.009,
-      "max_build_ms": 0.049,
+      "avg_move_ms": 0.034,
+      "std_move_ms": 0.019,
+      "max_move_ms": 0.222,
+      "total_move_ms": 18.14,
+      "avg_build_ms": 0.038,
+      "std_build_ms": 0.013,
+      "max_build_ms": 0.08,
       "opponents": [
         {
           "opponent": "DrJekyll_0",
@@ -2136,13 +2136,13 @@
       "games": 180,
       "win_rate": 0.256,
       "moves_made": 540,
-      "avg_move_ms": 0.03,
-      "std_move_ms": 0.02,
-      "max_move_ms": 0.2,
-      "total_move_ms": 16.222,
-      "avg_build_ms": 0.022,
-      "std_build_ms": 0.01,
-      "max_build_ms": 0.044,
+      "avg_move_ms": 0.045,
+      "std_move_ms": 0.027,
+      "max_move_ms": 0.285,
+      "total_move_ms": 24.28,
+      "avg_build_ms": 0.047,
+      "std_build_ms": 0.016,
+      "max_build_ms": 0.117,
       "opponents": [
         {
           "opponent": "DrJekyll_0",
@@ -2249,13 +2249,13 @@
       "games": 180,
       "win_rate": 0.089,
       "moves_made": 540,
-      "avg_move_ms": 14.122,
-      "std_move_ms": 32.412,
-      "max_move_ms": 125.036,
-      "total_move_ms": 7625.94,
-      "avg_build_ms": 0.025,
-      "std_build_ms": 0.014,
-      "max_build_ms": 0.154,
+      "avg_move_ms": 20.916,
+      "std_move_ms": 48.012,
+      "max_move_ms": 179.482,
+      "total_move_ms": 11294.458,
+      "avg_build_ms": 0.048,
+      "std_build_ms": 0.023,
+      "max_build_ms": 0.172,
       "opponents": [
         {
           "opponent": "DrJekyll_0",
@@ -2362,13 +2362,13 @@
       "games": 180,
       "win_rate": 0.194,
       "moves_made": 540,
-      "avg_move_ms": 0.024,
-      "std_move_ms": 0.039,
-      "max_move_ms": 0.853,
-      "total_move_ms": 12.714,
-      "avg_build_ms": 0.021,
-      "std_build_ms": 0.009,
-      "max_build_ms": 0.048,
+      "avg_move_ms": 0.037,
+      "std_move_ms": 0.05,
+      "max_move_ms": 1.081,
+      "total_move_ms": 19.796,
+      "avg_build_ms": 0.035,
+      "std_build_ms": 0.012,
+      "max_build_ms": 0.077,
       "opponents": [
         {
           "opponent": "DrJekyll_0",
@@ -2475,13 +2475,13 @@
       "games": 180,
       "win_rate": 0.239,
       "moves_made": 540,
-      "avg_move_ms": 0.033,
-      "std_move_ms": 0.052,
-      "max_move_ms": 1.178,
-      "total_move_ms": 17.685,
-      "avg_build_ms": 0.021,
-      "std_build_ms": 0.01,
-      "max_build_ms": 0.043,
+      "avg_move_ms": 0.046,
+      "std_move_ms": 0.05,
+      "max_move_ms": 1.112,
+      "total_move_ms": 24.712,
+      "avg_build_ms": 0.045,
+      "std_build_ms": 0.015,
+      "max_build_ms": 0.092,
       "opponents": [
         {
           "opponent": "DrJekyll_0",
@@ -2588,13 +2588,13 @@
       "games": 180,
       "win_rate": 0.028,
       "moves_made": 540,
-      "avg_move_ms": 14.028,
-      "std_move_ms": 32.082,
-      "max_move_ms": 123.906,
-      "total_move_ms": 7575.018,
-      "avg_build_ms": 0.025,
-      "std_build_ms": 0.011,
-      "max_build_ms": 0.051,
+      "avg_move_ms": 20.883,
+      "std_move_ms": 47.907,
+      "max_move_ms": 178.842,
+      "total_move_ms": 11276.777,
+      "avg_build_ms": 0.049,
+      "std_build_ms": 0.021,
+      "max_build_ms": 0.111,
       "opponents": [
         {
           "opponent": "DrJekyll_0",
@@ -2700,8 +2700,8 @@
     "avg_game_moves": 6.0,
     "longest_game_moves": 8,
     "forfeits": 0,
-    "total_move_time_ms": 31704.265,
-    "total_build_time_ms": 55.857
+    "total_move_time_ms": 47383.429,
+    "total_build_time_ms": 88.432
   },
   "structure": {
     "type": "league",
